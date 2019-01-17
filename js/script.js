@@ -8,17 +8,19 @@ $(document).ready(function() {
         var q1Result = $("#question1").val();
         var q2Result = $("#question2").val();
         var q3Result = $("#question3").val();
-        var totalScore ;
+        var color = rainbow (q1Result,q2Result,q3Result);
+        
+        $(".result").text("You're the color  " + color);
+    
     });
 
 });
 
 function rainbow  (answer1, answer2, answer3){
-    //var red= 0;
-    //var blue = 0;
-    //var yellow =0;
-    //var error = false;
-      var score= 0;
+    var red= 0;
+    var blue = 0;
+    var yellow =0;
+    var error = false;
     
    if (answer1 === "Yes" ){
        red += 20;
@@ -43,17 +45,15 @@ function rainbow  (answer1, answer2, answer3){
    } else if (answer3 === "No"){
        blue =+ 5 
    } 
+   
+   // if red is largest, return red
+   // if blue is largest, return blue
+   // or if yellow is biggest, return "yellow";
+   if (red > yellow && red > blue) {
+       return "red";
+   } else if (yellow > blue) {
+       return "yellow";
+   } else {
+       return "blue";
+   }
 }
-
-function questions(score){
-     if ( score ===60 ){
-        return "Red" ;
-    } else if (score  === 30 && score < 29 ){
-        return "Yellow";
-    } else if ( score === 15 && score < 14)
-        return "Blue";
-    } else { return "You'r not part of the rainbow.... SORRY";}
-    
-}
-
-totalScore = question1 += question2 += question3
